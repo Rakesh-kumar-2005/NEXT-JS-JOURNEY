@@ -1,0 +1,15 @@
+diff --git a/node_modules/@clerk/shared/dist/react/index.mjs b/node_modules/@clerk/shared/dist/react/index.mjs
+index 5280947..2b04309 100644
+--- a/node_modules/@clerk/shared/dist/react/index.mjs
++++ b/node_modules/@clerk/shared/dist/react/index.mjs
+@@ -964,8 +964,8 @@ var useCheckout = (options) => {
+ // src/react/commerce.tsx
+ import { useCallback as useCallback4, useEffect as useEffect2, useMemo as useMemo3, useState as useState3 } from "react";
+ import React6 from "react";
+-import useSWR from "swr";
+-import useSWRMutation from "swr/mutation";
++import { useSWR } from "swr";
++import { useSWRMutation } from "swr/mutation";
+ 
+ // src/react/stripe-react/index.tsx
+ import React5, { useState as useState2 } from "react";
