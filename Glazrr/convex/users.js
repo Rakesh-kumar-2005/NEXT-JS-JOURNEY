@@ -8,11 +8,7 @@ export const store = mutation({
       throw new Error("Called storeUser without authentication present");
     }
 
-    // Check if we've already stored this identity before.
-    // Note: If you don't want to define an index right away, you can use
-    // ctx.db.query("users")
-    //  .filter(q => q.eq(q.field("tokenIdentifier"), identity.tokenIdentifier))
-    //  .unique();
+     // Check if we've already stored this identity before
     const user = await ctx.db
       .query("users")
       .withIndex("by_token", (q) =>

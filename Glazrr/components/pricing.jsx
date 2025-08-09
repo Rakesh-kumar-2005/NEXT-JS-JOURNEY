@@ -1,9 +1,9 @@
 "use client";
 
+import useIntersectionObserver from "@/hooks/use-intersection-observer";
 import { useAuth } from "@clerk/nextjs";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import useIntersectionObserver from "@/hooks/use-intersection-observer";
 
 const PricingCard = ({
   id,
@@ -42,10 +42,10 @@ const PricingCard = ({
       ref={ref}
       className={`relative backdrop-blur-lg border rounded-3xl p-8 transition-all duration-700 cursor-pointer ${
         featured
-          ? "bg-gradient-to-b from-blue-500/20 to-purple-600/20 border-blue-400/50 scale-105"
+          ? "bg-gradient-to-b from-blue-500/20 to-purple-600/20 border-blue-400/50 scale-100"
           : "bg-white/5 border-white/10"
-      } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${
-        isHovered ? "transform scale-115 rotate-1 z-10" : ""
+      } ${isVisible ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10"} ${
+        isHovered ? "transform scale-110  z-10" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -60,7 +60,7 @@ const PricingCard = ({
 
       <div className="text-center">
         <h3 className="text-2xl font-bold text-white mb-2">{plan}</h3>
-        <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-6">
+        <div className="text-4xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-6">
           ${price}
           {price > 0 && <span className="text-lg text-gray-400">/month</span>}
         </div>
@@ -68,7 +68,7 @@ const PricingCard = ({
         <ul className="space-y-3 mb-8">
           {features.map((feature, index) => (
             <li key={index} className="flex items-center text-gray-300">
-              <span className="text-green-400 mr-3">✓</span>
+              <span className="text-emerald-400 mr-3">✓</span>
               {feature}
             </li>
           ))}
@@ -77,11 +77,11 @@ const PricingCard = ({
         <Button
           variant={featured ? "primary" : "glass"}
           size="xl"
-          className="w-full"
+          className="w-[90%] rounded-full transition-all duration-300 hover:scale-105"
           onClick={handlePopup}
           disabled={isCurrentPlan || !planId}
         >
-          {isCurrentPlan ? "Active Plan" : buttonText}
+          {isCurrentPlan ? "Current Plan" : buttonText}
         </Button>
       </div>
     </div>
@@ -93,8 +93,8 @@ const PricingSection = () => {
   const plans = [
     {
       id: "free_user",
-      plan: "Starter",
-      price: 0.0,
+      plan: "Free",
+      price: 0,
       features: [
         "3 Projects Per Month",
         "6 Exports Per Month",
@@ -102,13 +102,12 @@ const PricingSection = () => {
         "Color Adjustments",
         "Standard Quality Exports",
       ],
-      buttonText: "Start Creating",
+      buttonText: "Get Started Free",
     },
     {
-      id: "pro_user",
-      plan: "Enterprise",
-      price: 30.0,
-      featured: true,
+      id: "pro",
+      plan: "Pro",
+      price: 12,
       features: [
         "Unlimited Projects",
         "Unlimited Exports In High Quality",
@@ -116,20 +115,25 @@ const PricingSection = () => {
         "AI Background Removal And Generator",
         "AI Extend, Retouch And More...",
       ],
+      featured: true,
       planId: "cplan_30xh3DefngKe5XtkVVvrscm5G3X",
-      buttonText: "Go Professional",
+      buttonText: "Upgrade to Pro",
     },
   ];
+
   return (
     <section className="py-20" id="pricing">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
-            Choose Your Power Level
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-white mb-6">
+            Simple{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+              Pricing
+            </span>
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Unlock the full potential of AI-powered image editing with our
-            flexible plans
+          <p className="text-xl text-gray-300">
+            Start free and upgrade when you need more power. No hidden fees,
+            cancel anytime.
           </p>
         </div>
 
