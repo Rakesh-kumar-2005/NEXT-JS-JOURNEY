@@ -10,9 +10,12 @@ const ProjectCard = ({ project, onEdit }) => {
             src={project.thumbnailUrl}
             alt={project.title}
             className="w-full h-full object-cover rounded-md"
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+            loading="lazy"
           />
-        )}
-      </div>
+        )}      </div>
       <CardContent>
         <p>{project.title}</p>
       </CardContent>

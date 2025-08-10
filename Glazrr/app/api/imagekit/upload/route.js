@@ -19,13 +19,27 @@ export async function POST(request) {
 
     const formData = await request.formData();
     const file = formData.get("file");
-    const fileName = formData.get("fileName");
+    const fileName = formData.get("fileName") || file.name;
 
     // If file is not found
     if (!file) {
       return NextResponse.json({ error: "File not found" }, { status: 400 });
     }
 
+    // Basic validation...
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp", 'image/jpg', 'image/gif'];
+    const maxSizeBytes = 20 * 1024 * 1024; // 20MB
+
+    // if unsupported file type...
+    if (!allowedTypes.includes(file.type)) {
+      return NextResponse.json({ error: "Unsupported file type" }, { status: 415 });
+    }
+
+    // If file size is greater than 20MB...
+    if (file.size > maxSizeBytes) {
+      return NextResponse.json({ error: "File too large" }, { status: 413 });
+    }
+    
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 

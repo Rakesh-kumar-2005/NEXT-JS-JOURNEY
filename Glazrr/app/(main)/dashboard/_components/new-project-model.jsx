@@ -126,8 +126,8 @@ const NewProjectModel = ({ isOpen, onClose }) => {
       toast.success("Project created successfully!");
     
       // Navigate to Editor page...
-      router.push(`editor/${projectId}`);
-
+      // Navigate to Editor page...
+      router.push(`/editor/${projectId}`);
     } catch (err) {
       console.log('Error creating project',err);
       toast.error(err.message || "Failed to create project. Please try again.");
@@ -206,8 +206,7 @@ const NewProjectModel = ({ isOpen, onClose }) => {
                   <img
                     src={previewUrl}
                     alt="Preview"
-                    className="w-full h-64 object=cover rounded-xl border-2 border-dashed border-white/20"
-                  />
+                    className="w-full h-64 object-cover rounded-xl border-2 border-dashed border-white/20"                  />
                   <Button
                     variant="glass"
                     size="icon"
