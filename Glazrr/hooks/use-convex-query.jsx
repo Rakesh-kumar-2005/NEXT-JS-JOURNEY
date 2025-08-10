@@ -12,7 +12,7 @@ export const useConvexQuery = (query, ...args) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (isLoading == undefined) {
+    if (result === undefined) {
       setIsLoading(true);
     } else {
       try {
@@ -39,7 +39,7 @@ export const useConvexMutation = (mutation) => {
   const mutationFn = useQuery(mutation);
 
   const [data, setData] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const mutate = async (...args) => {
