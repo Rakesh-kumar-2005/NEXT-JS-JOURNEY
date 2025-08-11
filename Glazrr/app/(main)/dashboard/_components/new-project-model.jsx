@@ -16,7 +16,6 @@ import { Crown, ImageIcon, Loader2, Upload, X } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useMutation } from "convex/react";
 import { useDropzone } from "react-dropzone";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -53,7 +52,7 @@ const NewProjectModel = ({ isOpen, onClose }) => {
   const canCreate = canCreateProject(currentProjectCount);
 
   // Project creating function...
-  const createProject = useMutation(api.projects.create);
+  const { mutate: createProject } = useConvexMutation(api.projects.create);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
