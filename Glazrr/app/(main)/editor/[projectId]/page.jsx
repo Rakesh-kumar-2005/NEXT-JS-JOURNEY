@@ -6,8 +6,10 @@ import { CanvasContext } from "@/context/context";
 import { Loader2, Monitor } from "lucide-react";
 import { useConvexQuery } from "@/hooks/use-convex-query";
 import { api } from "@/convex/_generated/api";
-import { RingLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 import CanvasEditor from "./_components/canvas";
+import EditorTopBar from "./_components/editor-topbar";
+import EditorSideBar from "./_components/editor-sidebar";
 
 const Editor = () => {
   const params = useParams();
@@ -81,8 +83,8 @@ const Editor = () => {
           {processingMessage && (
             <div className="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 flex items-center justify-center">
               <div className="rounded-lg p-6 flex flex-col items-center justify-center">
-                <RingLoader color="#22d3ee" />
-                <div className="text-center">
+                <PropagateLoader size={20} color="#22d3ee" />
+                <div className="text-center mt-6">
                   <p className="text-white font-medium">{processingMessage}</p>
                   <p className="text-white/70 text-sm mt-1">
                     Please wait, do not switch tabs or navigate away...
@@ -93,9 +95,12 @@ const Editor = () => {
           )}
 
           {/* Top Bar */}
+          <EditorTopBar project={project} />
           <div className="overflow-hidden flex flex-1">
-
             {/* Side Bar */}
+            <EditorSideBar project={project} />
+
+
             <div className="flex-1">
 
               {/* Canvas */}
