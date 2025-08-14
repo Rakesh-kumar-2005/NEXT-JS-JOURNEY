@@ -22,7 +22,7 @@ const StatsSection = () => {
     });
 
   return (
-    <section className={`py-16 px-6`}>
+    <section className={`w-full flex items-center justify-center`}>
       <div className={`max-w-6xl`}>
         <div className="backdrop-blur-lg transition-all duration-600 hover:scale-103 bg-white/5 border border-white/10 rounded-3xl p-12">
           <div className="grid md:grid-cols-4 gap-8 text-center">

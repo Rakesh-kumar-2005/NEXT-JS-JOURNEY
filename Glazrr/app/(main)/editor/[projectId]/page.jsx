@@ -6,7 +6,7 @@ import { CanvasContext } from "@/context/context";
 import { Loader2, Monitor } from "lucide-react";
 import { useConvexQuery } from "@/hooks/use-convex-query";
 import { api } from "@/convex/_generated/api";
-import { PropagateLoader } from "react-spinners";
+import { BounceLoader, PropagateLoader } from "react-spinners";
 import CanvasEditor from "./_components/canvas";
 import EditorTopBar from "./_components/editor-topbar";
 import EditorSideBar from "./_components/editor-sidebar";
@@ -35,7 +35,7 @@ const Editor = () => {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-16 w-16 animate-spin text-cyan-400" />
+          <BounceLoader size={60} color="#3bd4f6" />
           <p className="text-2xl text-white/70">Loading...</p>
         </div>
       </div>
