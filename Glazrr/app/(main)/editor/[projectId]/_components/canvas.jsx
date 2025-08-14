@@ -8,7 +8,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { BounceLoader } from "react-spinners";
 
 const CanvasEditor = ({ project }) => {
-
   const canvasRef = useRef();
   const containerRef = useRef();
 
@@ -19,9 +18,18 @@ const CanvasEditor = ({ project }) => {
     useCanvas();
 
   // updating the project...
-  const { mutate: updateProject } = useConvexMutation(
-    api.projects.updateProject
-  );
+  const {
+    mutate: updateProject,
+    data,
+  } = useConvexMutation(api.projects.updateProject);
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, 500);
+    }
+  }, [data, isLoading]);
 
   //Calculating viewPort size...
   const calculateVewPortScale = () => {
@@ -125,7 +133,7 @@ const CanvasEditor = ({ project }) => {
       }
 
       // Load saved canvas data...
-      if(project.canvasState) {
+      if (project.canvasState) {
         try {
           // loading the canvas data...
           await canvas.loadFromJSON(project.canvasState);
@@ -136,15 +144,10 @@ const CanvasEditor = ({ project }) => {
         }
       }
 
-
       canvas.calcOffset(); // Re-calculate the canvas offset...
       canvas.requestRenderAll(); // Render the canvas...
       setCanvasEditor(canvas); // setting the canvas editor...
 
-      setTimeout(() => {
-        window.dispatchEvent(new Event("resize"));
-      }, 500);
-      
       setIsLoading(false);
     };
 
@@ -152,7 +155,7 @@ const CanvasEditor = ({ project }) => {
     initializeCanvas();
 
     return () => {
-      if(canvasEditor) {
+      if (canvasEditor) {
         canvasEditor.dispose(); // clean up...
         setCanvasEditor(null);
       }
@@ -161,24 +164,24 @@ const CanvasEditor = ({ project }) => {
 
   // Function for saving the canvas state...
   const saveCanvasState = async () => {
-    if(!canvasEditor || !project) return;
+    if (!canvasEditor || !project) return;
 
     try {
       const canvasJSON = canvasEditor.toJSON();
-      
+
       await updateProject({
         projectId: project._id,
         canvasState: canvasJSON,
-      })
+      });
     } catch (error) {
       console.error("Error saving canvas state:", error);
-      r
+      r;
     }
-  }
+  };
 
   // The 2 second delay save...
   useEffect(() => {
-    if(!canvasEditor) return;
+    if (!canvasEditor) return;
     let saveTimeOut;
 
     const handleCanvasChange = () => {
@@ -197,15 +200,13 @@ const CanvasEditor = ({ project }) => {
       canvasEditor.off("object:modified", handleCanvasChange);
       canvasEditor.off("object:added", handleCanvasChange);
       canvasEditor.off("object:removed", handleCanvasChange);
-    }
-  }, [canvasEditor])
-  
+    };
+  }, [canvasEditor]);
 
-  // Handling the resize... 
+  // Handling the resize...
   useEffect(() => {
-    
     const handleResize = () => {
-      if(!canvasEditor || !project) return;
+      if (!canvasEditor || !project) return;
 
       const newScale = calculateVewPortScale();
       canvasEditor.setDimensions(
@@ -222,32 +223,29 @@ const CanvasEditor = ({ project }) => {
       canvasEditor.calcOffset(); // Re-calculate the canvas offset...
       canvasEditor.requestRenderAll(); // Render the canvas...
     };
-    
+
     window.addEventListener("resize", handleResize);
-  
+
     return () => {
       window.removeEventListener("resize", handleResize);
-    }
-  }, [canvasEditor, project])
-  
+    };
+  }, [canvasEditor, project]);
 
   // Cursor Changing for the crop operation...
   useEffect(() => {
-    if(!canvasEditor) return;
-    
-    switch(activeTool){
-      case 'crop':
-        canvasEditor.defaultCursor = 'crosshair';
-        canvasEditor.hoverCursor = 'crosshair';
+    if (!canvasEditor) return;
+
+    switch (activeTool) {
+      case "crop":
+        canvasEditor.defaultCursor = "crosshair";
+        canvasEditor.hoverCursor = "crosshair";
         break;
       default:
-        canvasEditor.defaultCursor = 'default';
-        canvasEditor.hoverCursor = 'move';
+        canvasEditor.defaultCursor = "default";
+        canvasEditor.hoverCursor = "move";
         break;
     }
-    
-  }, [canvasEditor, activeTool])
-  
+  }, [canvasEditor, activeTool]);
 
   return (
     <div
