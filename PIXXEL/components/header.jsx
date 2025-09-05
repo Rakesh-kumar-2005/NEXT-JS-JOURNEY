@@ -13,13 +13,22 @@ import { LayoutDashboard } from "lucide-react";
 
 const Header = () => {
   const path = usePathname();
-
   const { isLoading } = useStoreUser();
 
   // Header will disappear if the user is in editor section...
   if (path.includes("/editor")) {
     return null;
   }
+
+  // Function to check if a section is active based on hash or scroll position
+  const isActiveSection = (sectionId) => {
+    // You can implement scroll-based detection or hash-based detection here
+    // For now, using hash-based detection
+    if (typeof window !== 'undefined') {
+      return window.location.hash === `#${sectionId}`;
+    }
+    return false;
+  };
 
   return (
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 text-nowrap">
@@ -38,21 +47,45 @@ const Header = () => {
           <div className="hidden md:flex space-x-6">
             <Link
               href="#features"
-              className="transition-all duration-300 font-medium text-white hover:text-cyan-400 cursor-pointer"
+              className="relative group transition-all duration-300 font-medium text-white hover:text-cyan-400 cursor-pointer py-1"
             >
               Features
+              {/* Underline */}
+              <span 
+                className={`absolute left-0 bottom-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out ${
+                  isActiveSection('features') 
+                    ? 'w-full' 
+                    : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </Link>
             <Link
               href="#pricing"
-              className="transition-all duration-300 font-medium text-white hover:text-cyan-400 cursor-pointer"
+              className="relative group transition-all duration-300 font-medium text-white hover:text-cyan-400 cursor-pointer py-1"
             >
               Pricing
+              {/* Underline */}
+              <span 
+                className={`absolute left-0 bottom-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out ${
+                  isActiveSection('pricing') 
+                    ? 'w-full' 
+                    : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </Link>
             <Link
               href="#contact"
-              className="transition-all duration-300 font-medium text-white hover:text-cyan-400 cursor-pointer"
+              className="relative group transition-all duration-300 font-medium text-white hover:text-cyan-400 cursor-pointer py-1"
             >
               Contact
+              {/* Underline */}
+              <span 
+                className={`absolute left-0 bottom-0 h-0.5 bg-cyan-400 transition-all duration-300 ease-out ${
+                  isActiveSection('contact') 
+                    ? 'w-full' 
+                    : 'w-0 group-hover:w-full'
+                }`}
+              ></span>
             </Link>
           </div>
         )}

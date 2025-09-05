@@ -38,9 +38,18 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
             <Link href="/dashboard">
-              <Button variant="primary" size="xl">
+              <Button 
+                variant="primary" 
+                size="xl"
+                className="relative overflow-hidden group"
+                style={{
+                  boxShadow: '0 0 30px rgba(34, 211, 238, 0.3)',
+                }}
+              >
                 <span className="animate-bounce">🌟</span>
                 Start Creating
+                {/* Neon glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
               </Button>
             </Link>
 
@@ -48,12 +57,17 @@ const HeroSection = () => {
               <Button
                 variant="glass"
                 size="xl"
-                className="group transition-all duration-300"
+                className="group transition-all duration-300 relative overflow-hidden"
+                style={{
+                  boxShadow: '0 0 20px rgba(139, 92, 246, 0.2)',
+                }}
               >
                 Watch Demo
                 <span className="text-2xl transform transition-transform duration-300 group-hover:translate-x-1">
                   ›
                 </span>
+                {/* Ripple effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-transparent to-cyan-500/20 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-full" />
               </Button>
             </Link>
           </div>
