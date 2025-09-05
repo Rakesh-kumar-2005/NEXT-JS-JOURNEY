@@ -1,4 +1,4 @@
-# 🖼️ Glazrr - AI Image Editor  
+# 🖼️ PIXXEL - AI Image Editor  
 
 This project is an AI-powered Image Editor built with Next.js, combining essential editing tools with advanced AI enhancements for a modern web experience. Users can easily perform tasks like cropping, resizing, brightness/contrast adjustments, and applying filters, while pro users gain access to AI features such as background removal, touch-ups, and automated image enhancement.
 
