@@ -33,7 +33,6 @@ export function ResizeControls({ project }) {
 
   useEffect(() => {
     if (!isLoading && data) {
-      window.location.reload();
     }
   }),
     [data, isLoading];

@@ -122,14 +122,26 @@ const NewProjectModel = ({ isOpen, onClose }) => {
         canvasState: null,
       });
 
-      toast.success("Project created successfully!");
+      toast.success("Project created successfully!", {
+        style: {
+          background: "#000000",
+          color: "#22c55e",
+          border: "2px dashed #22c55e",
+        },
+      });
     
       // Navigate to Editor page...
       // Navigate to Editor page...
       router.push(`/editor/${projectId}`);
     } catch (err) {
       console.log('Error creating project',err);
-      toast.error(err.message || "Failed to create project. Please try again.");
+      toast.error(err.message || "Failed to create project. Please try again.", {
+        style: {
+          background: "#000000",
+          color: "#c52222",
+          border: "2px dashed #ff0000",
+        },
+      });
     }finally{
       setIsUploading(false);
     }
@@ -171,8 +183,8 @@ const NewProjectModel = ({ isOpen, onClose }) => {
                       : "Project Limit Reached..."}
 
                     {currentProjectCount === 2
-                      ? "This will be your last free project. Upgrade to Glazrr Pro for unlimited projects..."
-                      : "Free Plan is limited to 3 projects. Upgrade to Glazrr Pro to create unlimited projects..."}
+                      ? "This will be your last free project. Upgrade to Pixxel Pro for unlimited projects..."
+                      : "Free Plan is limited to 3 projects. Upgrade to Pixxel Pro to create unlimited projects..."}
                   </div>
                 </AlertDescription>
               </Alert>

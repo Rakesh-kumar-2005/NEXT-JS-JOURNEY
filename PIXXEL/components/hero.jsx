@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div
           className={`transition-all duration-1000 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0  translate-y-10"} `}
         >
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight">
+          <h1 className="text-6xl md:text-7xl font-black mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
               Create
             </span>
@@ -73,11 +73,11 @@ const HeroSection = () => {
               <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 min-h-96">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   </div>
-                  <div className="text-white text-sm">Pixxel Pro</div>
+                  <div className="text-white font-bold text-sm">Pixxel Pro</div>
                 </div>
 
                 <div className="grid grid-cols-4 gap-4 mb-6">

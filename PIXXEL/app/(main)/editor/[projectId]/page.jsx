@@ -9,7 +9,7 @@ import { EditorTopBar } from "./_components/editor-topbar";
 import { EditorSidebar } from "./_components/editor-sidebar";
 import CanvasEditor from "./_components/canvas";
 import { CanvasContext } from "@/context/context";
-import { RingLoader } from "react-spinners";
+import { PuffLoader, PulseLoader, RingLoader } from "react-spinners";
 
 export default function EditorPage() {
   const params = useParams();
@@ -31,7 +31,7 @@ export default function EditorPage() {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-cyan-400" />
+          <PuffLoader className="h-13 w-13 animate-spin text-cyan-400" color="#22d3ee" />
           <p className="text-white/70">Loading...</p>
         </div>
       </div>

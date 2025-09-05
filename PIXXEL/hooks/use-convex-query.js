@@ -18,7 +18,13 @@ export const useConvexQuery = (query, ...args) => {
         setError(null);
       } catch (err) {
         setError(err);
-        toast.error(err.message);
+        toast.error(err.message, {
+          style: {
+            background: "#000000",
+            color: "#c52222",
+            border: "2px dashed #ff0000",
+          },
+        });
       } finally {
         setIsLoading(false);
       }
@@ -48,7 +54,13 @@ export const useConvexMutation = (mutation) => {
       return response;
     } catch (err) {
       setError(err);
-      toast.error(err.message);
+      toast.error(err.message, {
+        style: {
+          background: "#000000",
+          color: "#c52222",
+          border: "2px dashed #ff0000",
+        },
+      });
       throw err;
     } finally {
       setIsLoading(false);

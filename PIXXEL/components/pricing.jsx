@@ -125,10 +125,10 @@ const PricingSection = () => {
     <section className="py-20" id="pricing">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
-           <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+           <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
             Choose Your Power Level
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-lg text-white/80 max-w-3xl mx-auto">
             Unlock the full potential of AI-powered image editing with our flexible plans
           </p>
         </div>
