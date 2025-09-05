@@ -36,10 +36,10 @@ The platform is powered by Convex for real-time database functions and Clerk for
 ### 🏙️ Dashboard Section View
 ![Dashboard View](https://raw.githubusercontent.com/Rakesh-kumar-2005/NEXT-JS-JOURNEY/main/PIXXEL/public/ss3.png)
 
-### 🏙️ Editor Section View
+### 🎚️ Editor Section View
 ![Mobile View](https://raw.githubusercontent.com/Rakesh-kumar-2005/NEXT-JS-JOURNEY/main/PIXXEL/public/ss4.png)
 
-### 🏙️ AI Feature Section View
+### 🤖 AI Feature Section View
 ![Mobile View](https://raw.githubusercontent.com/Rakesh-kumar-2005/NEXT-JS-JOURNEY/main/PIXXEL/public/ss5.png)
 
 ---
