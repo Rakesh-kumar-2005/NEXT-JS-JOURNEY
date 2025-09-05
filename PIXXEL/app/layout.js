@@ -5,8 +5,8 @@ import { ConvexClientProvider } from "@/components/convex-client-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
-import { FloatingShapes } from "@/components/floating-shapes";
 import { Toaster } from "sonner";
+import FloatingShapes from "@/components/floating-shapes";
 
 const inter = Inter({ subsets: ["latin"] });
 

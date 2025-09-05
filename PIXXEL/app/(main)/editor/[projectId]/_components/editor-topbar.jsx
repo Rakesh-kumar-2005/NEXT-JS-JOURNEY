@@ -31,11 +31,11 @@ import {
 import { useRouter } from "next/navigation";
 import { useCanvas } from "@/context/context";
 import { usePlanAccess } from "@/hooks/use-plan-access";
-import { UpgradeModal } from "@/components/upgrade-modal";
 import { FabricImage } from "fabric";
 import { api } from "@/convex/_generated/api";
 import { useConvexMutation, useConvexQuery } from "@/hooks/use-convex-query";
 import { toast } from "sonner";
+import UpgradeModal from "@/components/upgrade-modal";
 
 const TOOLS = [
   {
